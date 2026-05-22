@@ -1,27 +1,16 @@
 Memory Agent OS — 桌面一键脚本（desktop-os-tests）
 
-【重要】若从 \\wsl.localhost\... 双击 .cmd 失败：
-  1. 先双击「安装到桌面OS目录.cmd」→ 脚本会复制到 桌面\OS
-  2. 以后从 桌面\OS  里双击运行（推荐）
-  3. 或先双击「0-诊断环境.cmd」查看报错
-
 【推荐顺序】
-  0. 0-诊断环境.cmd           — 检查 WSL / 路径 / Python
-  1. 新窗口启动服务.cmd        — 启动后端（或一键测试会自动启动）
-  2. 后台自动测试截图.cmd      — 一键 HR 报告 + Agent 浏览器截图
+  0. 0-诊断环境.cmd
+  1. 新窗口启动服务.cmd
+  2. 后台自动测试截图.cmd
   3. 打开Web控制台.cmd
 
-【录屏 / HR 手工测试用例】
-  项目内 docs/HR_TEST_CASES.md（中文表格，按编号演示即可）
-  口播分镜：docs/VIDEO_SCRIPT.md
+【文档】
+  docs/TEST_GUIDE.md — 测试指南
+  docs/USER_MANUAL.md — 使用说明
 
-【项目路径】自动检测，默认:
-  WSL: /home/zwq/AgentOSSystem
-  由 _wsl_env.cmd 根据脚本位置解析
+【推送 GitHub】
+  desktop-os-tests\用IDEA方式上传GitHub.cmd
 
-【失败时查看日志】
-  docs/test_runs/last_cmd_install.log
-
-【注意】
-  - 在 Windows 资源管理器中双击 .cmd，不要在 WSL 终端里运行 .cmd
-  - 真机键鼠需 GUARDED_UI_LIVE=1（启动脚本已默认）
+【项目路径】默认 WSL: /home/zwq/AgentOSSystem

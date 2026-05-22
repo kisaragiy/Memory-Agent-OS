@@ -198,7 +198,7 @@ def build_user_manual_docx(layers: Path) -> Path:
     out = DOCS / "MemoryAgentOS-使用说明.docx"
     doc = Document()
     _heading(doc, "Memory Agent OS — 使用说明", 0)
-    _para(doc, "面向演示、测试与录屏的操作手册。")
+    _para(doc, "安装、界面与 API 说明。")
     doc.add_paragraph()
 
     _heading(doc, "1. 环境要求", 1)
@@ -223,7 +223,7 @@ def build_user_manual_docx(layers: Path) -> Path:
     )
 
     _heading(doc, "3. 界面操作", 1)
-    _para(doc, "录屏请使用开发者模式，以展示完整 trace。")
+    _para(doc, "查看执行细节时请使用开发者模式，以展示完整 trace。")
     table = doc.add_table(rows=1, cols=2)
     table.style = "Table Grid"
     table.rows[0].cells[0].text = "输入示例"
@@ -263,14 +263,14 @@ def build_user_manual_docx(layers: Path) -> Path:
     _heading(doc, "6. 架构示意", 1)
     _add_image(doc, layers, "图：系统分层", width_in=5.5)
 
-    _heading(doc, "7. 录屏检查清单", 1)
+    _heading(doc, "7. 发布前检查清单", 1)
     _bullet(
         doc,
         [
             "pytest tests/ -q 通过",
             "8787 服务可访问",
             "开发者模式已开启",
-            "示例输入已准备（见 VIDEO_SCRIPT.md）",
+            "冒烟用例已走通（见 TEST_GUIDE.md）",
         ],
     )
 
@@ -328,10 +328,7 @@ def build_test_guide_docx(pipeline: Path) -> Path:
         ],
     )
 
-    _heading(doc, "5. 录屏脚本", 1)
-    _para(doc, "详细分镜见 docs/VIDEO_SCRIPT.md（约 5–8 分钟口播稿）。")
-
-    _heading(doc, "6. 执行路径参考", 1)
+    _heading(doc, "5. 执行路径参考", 1)
     _add_image(doc, pipeline, "图：entry() 流水线")
 
     doc.save(out)
@@ -356,7 +353,7 @@ def main() -> int:
     ]
     for f in files:
         print(f"  {f}")
-    print("Done. Open docs/*.docx for 录屏/答辩交付.")
+    print("Done. Generated docs/*.docx")
     return 0
 
 

@@ -23,7 +23,7 @@ if [ -f .venv/bin/activate ]; then source .venv/bin/activate; fi
   else
     EXTRA=(--no-pytest --start-server)
   fi
-  python3 scripts/background_test_capture.py --hr --browser-only --out-dir "$OUT" "${EXTRA[@]}" 2>&1
+  python3 scripts/background_test_capture.py --browser-only --out-dir "$OUT" "${EXTRA[@]}" 2>&1
   echo "CAPTURE_EXIT=$?"
 } > "$OUT/run.log" 2>&1
 

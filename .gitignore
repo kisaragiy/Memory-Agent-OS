@@ -38,6 +38,7 @@ Thumbs.db
 /tmp/
 desktop_captures/
 docs/test_runs/
+docs/MemoryAgentOS-*.docx
 scripts/git_result.txt
 scripts/run_result.txt
 scripts/copy_resume_log.txt
