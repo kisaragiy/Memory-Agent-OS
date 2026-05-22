@@ -14,7 +14,7 @@ from core.control.output_filter import OutputFilter
 from core.control.runtime_control import RuntimeControl
 
 
-# User-facing stream step labels (HR / 非技术用户)
+# User-facing stream step labels (simplified for end users)
 USER_STEP_LABELS: Dict[str, str] = {
     "started": "正在思考…",
     "input_normalized": "正在理解您的需求…",

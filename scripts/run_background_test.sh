@@ -23,4 +23,4 @@ if [ "${1:-}" = "--detach" ]; then
   exit 0
 fi
 
-exec python3 scripts/background_test_capture.py --hr --browser-only "$@"
+exec python3 scripts/background_test_capture.py --browser-only "$@"

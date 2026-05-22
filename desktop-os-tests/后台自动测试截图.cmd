@@ -16,8 +16,8 @@ wsl -d %DISTRO% bash -lc "cd '%WSL_ROOT%' && chmod +x scripts/fast_hr_test.py sc
 set RC=%ERRORLEVEL%
 
 echo.
-if %RC%==0 (echo [完成] 测试通过) else (echo [完成] 部分未通过，见上方或 report_hr.html)
-for /f "usebackq delims=" %%p in (`wsl -d %DISTRO% wslpath -w "$(wsl -d %DISTRO% cat '%WSL_ROOT%/docs/test_runs/LATEST.txt')/report_hr.html" 2^>nul`) do start "" "%%p"
+if %RC%==0 (echo [完成] 测试通过) else (echo [完成] 部分未通过，见上方或 test_report.html)
+for /f "usebackq delims=" %%p in (`wsl -d %DISTRO% wslpath -w "$(wsl -d %DISTRO% cat '%WSL_ROOT%/docs/test_runs/LATEST.txt')/test_report.html" 2^>nul`) do start "" "%%p"
 goto :end
 :fail
 echo 环境失败，请运行 0-诊断环境.cmd

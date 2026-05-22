@@ -24,7 +24,7 @@ export GIT_AUTHOR_EMAIL="taqibala@outlook.com"
 export GIT_COMMITTER_NAME="张伟强"
 export GIT_COMMITTER_EMAIL="taqibala@outlook.com"
 git add README.md PORTFOLIO.md LICENSE .gitignore legacy/ docs/ scripts/generate_resume_pdf.py core/memory/vector_store.py 2>/dev/null || true
-git commit --trailer "Co-authored-by: Cursor <cursoragent@cursor.com>" -m "chore: portfolio docs and resume assets" 2>&1 || true
+git commit -m "chore: portfolio docs and assets" 2>&1 || true
 git log -1 --oneline 2>&1 || true
 
 ls -la docs/

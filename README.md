@@ -1,6 +1,6 @@
 # Memory Agent OS
 
-> LLM 驱动的单内核 Agent Runtime + 虚拟叙事世界引擎 · 作品集主仓库
+> LLM 驱动的单内核 Agent Runtime + 虚拟叙事世界引擎
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](requirements.txt)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.110+-green.svg)](agent_service/app.py)
@@ -77,35 +77,26 @@ python3 -m pytest tests/ -q
 
 覆盖：对齐策略、记忆治理、自主循环、Phase4 Guard、ModelPolicy 等。
 
-## 演示文档（录屏 / 答辩）
-
-```bash
-./scripts/build_portfolio_docs.sh
-# 或: pip install -r requirements-docs.txt && python3 scripts/generate_portfolio_docs.py
-```
-
-生成物：
+## 文档
 
 | 文件 | 说明 |
 |------|------|
-| `docs/MemoryAgentOS-系统架构说明.docx` | 架构说明 + 分层/执行路径图 |
-| `docs/MemoryAgentOS-使用说明.docx` | 安装、界面、API |
-| `docs/MemoryAgentOS-测试与演示指南.docx` | 冒烟清单 + 5 分钟演示流程 |
-| `docs/diagrams/*.png` | 架构位图 |
-| `docs/VIDEO_SCRIPT.md` | 录屏分镜与口播稿 |
-| `docs/HR_TEST_CASES.md` | **HR 可读**手工测试用例（录屏打勾表） |
-| `docs/ARCHITECTURE_DIAGRAM.md` | Mermaid 图源（GitHub/VS Code 预览） |
+| [`docs/ARCHITECTURE_DIAGRAM.md`](docs/ARCHITECTURE_DIAGRAM.md) | 架构图源（Mermaid） |
+| [`docs/USER_MANUAL.md`](docs/USER_MANUAL.md) | 安装与使用 |
+| [`docs/TEST_GUIDE.md`](docs/TEST_GUIDE.md) | 自动化与冒烟测试 |
+| [`SYSTEM_BLUEPRINT.md`](SYSTEM_BLUEPRINT.md) | 系统约束与执行路径 |
 
-### 后台一键测试 + Agent 浏览器截图（HR 可读）
+可选：`pip install -r requirements-docs.txt && python3 scripts/generate_portfolio_docs.py` 生成 Word 版说明。
 
-Windows 双击：`desktop-os-tests/后台自动测试截图.cmd`（自动起服务、仅截 `/app/`、打开 `report_hr.html`）
+### 自动化冒烟（含 UI 截图）
 
 ```bash
 pip install -r requirements-test-capture.txt && python3 -m playwright install chromium
-python3 scripts/background_test_capture.py --hr --browser-only --start-server --open-report
+python3 scripts/background_test_capture.py --browser-only --start-server --open-report
 ```
 
-输出：`docs/test_runs/<时间戳>/report_hr.html`，截图如 `02_基础计算_1加2等于3_通过.png`（图顶有中文备注条）
+Windows：`desktop-os-tests/后台自动测试截图.cmd`  
+报告：`docs/test_runs/<时间戳>/test_report.html`
 
 ## 主要 API
 
@@ -146,4 +137,4 @@ https://github.com/kisaragiy/Memory-Agent-OS
 
 ## License
 
-MIT（作品集展示用途）
+MIT

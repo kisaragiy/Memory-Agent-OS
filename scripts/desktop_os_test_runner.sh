@@ -26,7 +26,7 @@ pip install -r requirements-test-capture.txt 2>&1 | tee -a "$LOG"
 echo "=== playwright chromium ===" | tee -a "$LOG"
 python3 -m playwright install chromium 2>&1 | tee -a "$LOG"
 
-EXTRA=(--hr --browser-only --open-report)
+EXTRA=(--browser-only --open-report)
 if curl -s -m 3 http://127.0.0.1:8787/api/health >/dev/null 2>&1; then
   echo "=== service already up, skip --start-server ===" | tee -a "$LOG"
 else

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 测试结束后在 WSL 运行，打印 HR 可读摘要
+# 测试结束后在 WSL 运行，打印冒烟测试摘要
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 LATEST="$ROOT/docs/test_runs/LATEST.txt"
 echo "========== Memory Agent OS 测试结果 =========="
@@ -9,7 +9,7 @@ fi
 if [ -f "$LATEST" ]; then
   RUN=$(cat "$LATEST")
   echo "报告目录: $RUN"
-  [ -f "$RUN/report_hr.html" ] && echo "HR报告: $RUN/report_hr.html"
+  [ -f "$RUN/test_report.html" ] && echo "报告: $RUN/test_report.html"
   if [ -f "$RUN/summary.json" ]; then
     export RUN
     python3 - <<'PY'

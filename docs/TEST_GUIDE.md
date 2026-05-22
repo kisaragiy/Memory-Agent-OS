@@ -1,6 +1,4 @@
-# Memory Agent OS — 测试与演示指南
-
-> **HR / 录屏用手工用例表**：见 [`HR_TEST_CASES.md`](HR_TEST_CASES.md)（非技术同事可读，含打勾记录表与口播要点）
+# Memory Agent OS — 测试指南
 
 ---
 
@@ -9,8 +7,8 @@
 | 类型 | 目的 |
 |------|------|
 | 自动化回归 | 验证内核约束未被破坏 |
-| 手工冒烟 | 录屏前确认 UI/API 可用 |
-| 集成演示 | 作品集 5 分钟流程可重复 |
+| 手工冒烟 | 发布前确认 UI/API 可用 |
+| 集成验证 | 核心演示流程可重复 |
 
 ---
 
@@ -25,8 +23,6 @@ python3 -m pytest tests/ -q
 **期望**：全部通过，无 ERROR。
 
 **覆盖范围（摘要）**：对齐策略、记忆治理、自主循环、Phase4 Guard、ModelPolicy 等。
-
-**录屏建议**：可在片头前快速运行并口播结果，不必录入完整 pytest 输出。
 
 ---
 
@@ -52,7 +48,7 @@ curl -s -X POST http://127.0.0.1:8787/api/run \
   -d '{"message":"1+2","mode":"developer"}' | head -c 500
 ```
 
-**通过标准**：响应含执行结果与 trace 相关字段（结构因版本略有差异）。
+**通过标准**：响应含执行结果与 trace 相关字段。
 
 ### 3.3 记忆写入
 
@@ -91,7 +87,7 @@ python3 scripts/verify_desktop_capture.py
 | # | 操作 | 预期 |
 |---|------|------|
 | 1 | 输入 `1+2` | 结果 3，trace 含 code 路由 |
-| 2 | 输入 `记住: 我叫张伟强` | 记忆成功提示或 trace |
+| 2 | 输入 `记住: 测试昵称` | 记忆成功提示或 trace |
 | 3 | 勾选 Phase5，输入短目标 | 多步执行可见 |
 | 4 | 打开桌面实况（若已配置） | 画面周期性刷新 |
 
@@ -106,13 +102,6 @@ python3 scripts/verify_desktop_capture.py
 - [ ] WorldRuntime 无直接 tool/shell 调用
 - [ ] UI 自动化经 `guarded_ui_action` + Guard
 
-可用 grep 辅助（示例）：
-
-```bash
-rg "class ExecutionEngine" core --glob "*.py"
-rg "apply_mutation" core --glob "*.py"
-```
-
 ---
 
 ## 6. 缺陷记录模板
@@ -123,19 +112,10 @@ rg "apply_mutation" core --glob "*.py"
 
 ---
 
-## 7. 交付物清单（测试 + 录屏）
+## 7. 交付物清单
 
 | 文件 | 说明 |
 |------|------|
 | `docs/ARCHITECTURE_DIAGRAM.md` | Mermaid 架构图源 |
-| `docs/diagrams/*.png` | 脚本生成的位图 |
-| `docs/*.docx` | 运行 `generate_portfolio_docs.py` 生成 |
-| `docs/VIDEO_SCRIPT.md` | 录屏分镜 |
-| 演示视频 | 自行录制，建议 MP4 H.264 |
-
-生成 docx：
-
-```bash
-pip install python-docx
-python3 scripts/generate_portfolio_docs.py
-```
+| `docs/diagrams/*.png` | 脚本生成的位图（可选） |
+| `docs/*.docx` | 运行 `generate_portfolio_docs.py` 生成（可选） |

@@ -2,13 +2,13 @@
 """
 后台自动测试 + 截图。
 
-方式 A（HR 可读，仅 Agent 浏览器）:
+方式 A（浏览器冒烟 + 截图报告）:
   desktop-os-tests\\后台自动测试截图.cmd   # 一键，无需选项
 
 手动:
   pip install -r requirements-test-capture.txt
   python3 -m playwright install chromium
-  python3 scripts/background_test_capture.py --hr --browser-only --start-server --open-report
+  python3 scripts/background_test_capture.py --browser-only --start-server --open-report
 """
 from __future__ import annotations
 
@@ -209,7 +209,7 @@ class BackgroundTestRunner:
                 "00",
                 "准备_打开Agent控制台",
                 "打开网页控制台",
-                "HR：确认产品页面能访问；技术：/app/ 加载成功",
+                "确认产品页面可访问；技术：/app/ 加载成功",
                 f"GET {b.app_url}",
                 online,
                 p0,
@@ -232,7 +232,7 @@ class BackgroundTestRunner:
                 "01",
                 "服务健康_后端在线",
                 "服务是否在线",
-                "HR：绿点/服务在线即表示系统已启动；技术：健康检查接口返回 200",
+                "服务在线即表示后端已启动；技术：健康检查接口返回 200",
                 "GET /api/health",
                 h_ok and online,
                 p1,
@@ -262,7 +262,7 @@ class BackgroundTestRunner:
                 "02",
                 "基础计算_1加2等于3",
                 "基础计算 1+2",
-                "HR：像计算器一样给出正确答案 3；技术：走代码执行通道而非大模型瞎编",
+                "输入 1+2 应得到 3；技术：走代码执行通道",
                 "POST /api/run input=1+2",
                 calc_ok,
                 p2,
@@ -293,7 +293,7 @@ class BackgroundTestRunner:
                 "03",
                 "记忆写入_治理化存储",
                 "记忆功能",
-                "HR：能记住用户关键信息；技术：治理化记忆写入，带 trace",
+                "记住指令应成功；技术：治理化记忆写入，带 trace",
                 "POST /api/run input=记住:…",
                 mem_ok,
                 p3,
@@ -329,7 +329,7 @@ class BackgroundTestRunner:
                     "04",
                     "自主循环_Phase5",
                     "自主循环（进阶）",
-                    "HR：能分多步完成任务；技术：AutonomousOSLoop，每步仅 entry()",
+                    "应出现多步执行；技术：AutonomousOSLoop，每步仅 entry()",
                     "POST /api/autonomous/run",
                     auto_ok,
                     p4,
@@ -379,7 +379,7 @@ class BackgroundTestRunner:
                     "09",
                     "单元测试_pytest回归",
                     "自动化测试",
-                    "HR：相当于自动体检；技术：pytest 内核回归",
+                    "回归测试应全部通过；技术：pytest 内核回归",
                     "pytest tests/",
                     ok,
                     p,
@@ -416,7 +416,7 @@ class BackgroundTestRunner:
         overall = "通过" if passed == total and self.summary.get("pytest", {}).get("ok", True) else "部分未通过"
         html = f"""<!DOCTYPE html>
 <html lang="zh-CN"><head><meta charset="utf-8"/>
-<title>Memory Agent OS — 测试报告（HR/技术可读）</title>
+<title>Memory Agent OS — 测试报告</title>
 <style>
 body{{font-family:"Microsoft YaHei",sans-serif;margin:28px;background:#f1f5f9;color:#0f172a}}
 h1{{font-size:1.6rem}} .card{{background:#fff;border-radius:12px;padding:20px;margin:16px 0;box-shadow:0 1px 3px #0001}}
@@ -435,14 +435,14 @@ th{{background:#e2e8f0}} .shot img{{max-width:520px;border:1px solid #cbd5e1;bor
   <p><b>目录：</b> {self.out_dir}</p>
 </div>
 <div class="card">
-<h2>分步结果（给 HR / 面试官）</h2>
+<h2>分步结果</h2>
 <table>
 <tr><th>编号</th><th>测什么（人话）</th><th>结果</th><th>技术说明</th><th>截图（已备注）</th></tr>
 {"".join(rows)}
 </table>
 </div>
 <div class="card glossary">
-<h2>名词解释（HR 可看）</h2>
+<h2>名词解释</h2>
 <ul>
 <li><b>开发者模式</b>：展示系统内部执行过程，证明不是黑盒聊天。</li>
 <li><b>代码通道</b>：简单计算走程序执行，结果准确可验证。</li>
@@ -452,12 +452,12 @@ th{{background:#e2e8f0}} .shot img{{max-width:520px;border:1px solid #cbd5e1;bor
 </ul>
 </div>
 </body></html>"""
-        report = self.out_dir / "report_hr.html"
+        report = self.out_dir / "test_report.html"
         report.write_text(html, encoding="utf-8")
         # 技术简版
         tech = self.out_dir / "report.html"
         tech.write_text(
-            report.read_text(encoding="utf-8").replace("report_hr", "report"),
+            report.read_text(encoding="utf-8").replace("test_report", "report"),
             encoding="utf-8",
         )
         return report
@@ -470,7 +470,7 @@ th{{background:#e2e8f0}} .shot img{{max-width:520px;border:1px solid #cbd5e1;bor
         )
         report = self.build_hr_report() if self.hr_report else None
         if report:
-            self.log(f"HR 报告: {report}")
+            self.log(f"测试报告: {report}")
             try:
                 from core.platform.windows_desktop import WindowsDesktop
 
@@ -488,7 +488,7 @@ th{{background:#e2e8f0}} .shot img{{max-width:520px;border:1px solid #cbd5e1;bor
                 api_ok = self.run_hr_browser_suite()
             else:
                 api_ok = False
-                self.log("未启用 browser_only，请使用 --hr --browser-only")
+                self.log("未启用 browser_only，请使用 --browser-only")
             py_ok = self.run_pytest_suite() if self.run_pytest else True
             self.finish()
             return 0 if (api_ok and py_ok) else 1
@@ -503,8 +503,8 @@ def _write_latest_pointer(out_dir: Path) -> None:
 
 def main() -> int:
     ap = argparse.ArgumentParser(description="后台测试 — 可仅截 Agent 浏览器")
-    ap.add_argument("--hr", dest="hr", action="store_true", default=True, help="HR 可读报告（默认）")
-    ap.add_argument("--no-hr", dest="hr", action="store_false", help="关闭 HR 报告格式")
+    ap.add_argument("--summary-report", dest="hr", action="store_true", default=True, help="生成带说明的 HTML 报告（默认）")
+    ap.add_argument("--no-summary-report", dest="hr", action="store_false", help="仅 JSON/日志，不生成 HTML 报告")
     ap.add_argument("--browser-only", action="store_true", default=True, help="仅 Playwright 截 /app/")
     ap.add_argument("--desktop", action="store_true", help="改用全桌面截屏（旧行为）")
     ap.add_argument("--start-server", action="store_true", help="8787 未起则自动启动")
@@ -512,7 +512,7 @@ def main() -> int:
     ap.add_argument("--phase5", action="store_true", help="包含 Phase5 API（更慢）")
     ap.add_argument("--base-url", default=DEFAULT_BASE)
     ap.add_argument("--out-dir", default="")
-    ap.add_argument("--open-report", action="store_true", help="结束打开 report_hr.html")
+    ap.add_argument("--open-report", action="store_true", help="结束打开 test_report.html")
     args = ap.parse_args()
 
     ts = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -534,7 +534,7 @@ def main() -> int:
         try:
             from core.platform.windows_desktop import WindowsDesktop
 
-            WindowsDesktop.open_in_windows_shell(out_dir / "report_hr.html")
+            WindowsDesktop.open_in_windows_shell(out_dir / "test_report.html")
         except Exception:
             pass
     return code

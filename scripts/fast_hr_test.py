@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-快速 HR 测试 — 避免卡住：
+快速冒烟测试 — 避免卡住：
 - 不 playwright install
 - 不等 LLM 聊天（先 API 再截图 + 页面顶栏注入说明）
 - 不 pytest / 不 start-server（服务已在线时）
@@ -114,7 +114,7 @@ def main() -> int:
     steps = []
     all_ok = True
 
-    log("=== 快速 HR 测试开始 ===", logf)
+    log("=== 快速冒烟测试开始 ===", logf)
     if not health_ok(base):
         log("FAIL: 服务未启动，请先运行 新窗口启动服务.cmd", logf)
         (RUNS_ROOT / "last_exit_code.txt").write_text("EXIT:2\n", encoding="utf-8")
@@ -221,7 +221,7 @@ def main() -> int:
 
     summary = {
         "started_at": ts,
-        "mode": "fast_hr_test",
+        "mode": "fast_smoke_test",
         "steps": steps,
         "api": {"health": code == 200, "calc": calc_ok, "memory": mem_ok},
     }
@@ -238,15 +238,15 @@ def main() -> int:
         rows.append(f"<tr><td>{s.get('id')}</td><td>{s.get('title_hr')}</td><td>{st}</td><td>{img}</td></tr>")
     html = f"""<!DOCTYPE html><html><head><meta charset="utf-8"><title>快速测试报告</title></head>
 <body style="font-family:sans-serif;padding:20px">
-<h1>Memory Agent OS — 快速测试（不卡住版）</h1>
+<h1>Memory Agent OS — 冒烟测试报告</h1>
 <p>总体: <b>{'通过' if all_ok and calc_ok and mem_ok else '部分未通过'}</b></p>
 <table border="1" cellpadding="8">{''.join(rows)}</table>
 </body></html>"""
-    (out / "report_hr.html").write_text(html, encoding="utf-8")
+    (out / "test_report.html").write_text(html, encoding="utf-8")
 
     exit_code = 0 if (calc_ok and mem_ok and code == 200) else 1
     (RUNS_ROOT / "last_exit_code.txt").write_text(f"EXIT:{exit_code}\n", encoding="utf-8")
-    log(f"=== 完成 exit={exit_code} 报告 {out}/report_hr.html ===", logf)
+    log(f"=== 完成 exit={exit_code} 报告 {out}/test_report.html ===", logf)
     (RUNS_ROOT / "last_run_stdout.log").write_text(logf.read_text(encoding="utf-8"), encoding="utf-8")
     return exit_code
 
