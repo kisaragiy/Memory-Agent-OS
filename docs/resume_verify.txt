@@ -1,0 +1,3 @@
+OK wsl_pdf=/home/zwq/AgentOSSystem/docs/张伟强-后端开发.pdf bytes=76043
+has_agent_os=True
+has_2026=True

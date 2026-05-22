@@ -1,0 +1,53 @@
+=== 2026-05-22T16:26:18+08:00 push_github ===
+ROOT=/home/zwq/AgentOSSystem
+remote: https://github.com/kisaragiy/Memory-Agent-OS.git
+=== git status (short) ===
+M  .gitignore
+M  README.md
+A  "desktop-os-tests/0-\350\257\212\346\226\255\347\216\257\345\242\203.cmd"
+M  "desktop-os-tests/WSL\351\252\214\350\257\201\346\241\214\351\235\242\346\210\252\345\261\217.cmd"
+A  desktop-os-tests/_wsl_env.cmd
+M  "desktop-os-tests/\344\270\200\351\224\256\345\205\250\345\245\227\346\265\213\350\257\225.cmd"
+A  "desktop-os-tests/\344\270\212\344\274\240GitHub.cmd"
+M  "desktop-os-tests/\344\275\277\347\224\250\350\257\264\346\230\216.txt"
+A  "desktop-os-tests/\345\220\216\345\217\260\350\207\252\345\212\250\346\265\213\350\257\225\346\210\252\345\233\276-\345\256\214\345\205\250\345\220\216\345\217\260.cmd"
+A  "desktop-os-tests/\345\220\216\345\217\260\350\207\252\345\212\250\346\265\213\350\257\225\346\210\252\345\233\276.cmd"
+M  "desktop-os-tests/\345\220\257\345\212\250\346\241\214\351\235\242Agent\346\234\215\345\212\241.cmd"
+A  "desktop-os-tests/\345\256\211\350\243\205Playwright\346\210\252\345\233\276.cmd"
+M  "desktop-os-tests/\345\256\211\350\243\205\345\210\260\346\241\214\351\235\242OS\347\233\256\345\275\225.ps1"
+A  "desktop-os-tests/\346\211\223\345\274\200HR\346\265\213\350\257\225\347\224\250\344\276\213.cmd"
+A  "desktop-os-tests/\346\211\223\345\274\200\346\265\213\350\257\225\346\212\245\345\221\212.cmd"
+M  "desktop-os-tests/\346\226\260\347\252\227\345\217\243\345\220\257\345\212\250\346\234\215\345\212\241.cmd"
+M  "desktop-os-tests/\351\252\214\350\257\201\346\241\214\351\235\242\346\210\252\345\261\217.cmd"
+A  docs/ARCHITECTURE_DIAGRAM.md
+A  docs/GITHUB_UPLOAD.md
+A  docs/HR_TEST_CASES.md
+A  "docs/MemoryAgentOS-\344\275\277\347\224\250\350\257\264\346\230\216.docx"
+A  "docs/MemoryAgentOS-\346\265\213\350\257\225\344\270\216\346\274\224\347\244\272\346\214\207\345\215\227.docx"
+A  "docs/MemoryAgentOS-\347\263\273\347\273\237\346\236\266\346\236\204\350\257\264\346\230\216.docx"
+A  docs/PLAYWRIGHT_MANUAL_INSTALL.md
+A  docs/TEST_GUIDE.md
+A  docs/USER_MANUAL.md
+A  docs/VIDEO_SCRIPT.md
+D  "docs/\345\274\240\344\274\237\345\274\272-\345\220\216\347\253\257\345\274\200\345\217\221.pdf"
+D  index.html
+A  requirements-docs.txt
+A  requirements-test-capture.txt
+A  scripts/_run_exact.sh
+A  scripts/agent_browser_capture.py
+A  scripts/background_test_capture.py
+A  scripts/build_portfolio_docs.sh
+A  scripts/check_resume_and_git.sh
+A  scripts/collect_test_result.sh
+A  scripts/desktop_os_test_runner.sh
+A  scripts/do_git_commit.sh
+A  scripts/fast_hr_test.py
+A  scripts/generate_portfolio_docs.py
+A  scripts/kill_stuck_test.sh
+A  scripts/print_playwright_paths.py
+A  scripts/push_github.sh
+AM scripts/push_github_result.txt
+A  scripts/quick_test_for_agent.sh
+A  scripts/run_background_test.sh
+committed: 77dc68e chore: publish portfolio — docs, gitignore, exclude resume PDF
+=== git push -u origin main ===

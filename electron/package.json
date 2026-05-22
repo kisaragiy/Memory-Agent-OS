@@ -1,0 +1,14 @@
+{
+  "name": "memory-agent-os-desktop",
+  "version": "0.1.0",
+  "private": true,
+  "main": "main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "dev": "cross-env AGENT_ELECTRON_DEV=1 electron ."
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "electron": "^29.3.0"
+  }
+}

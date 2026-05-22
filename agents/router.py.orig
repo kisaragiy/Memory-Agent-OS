@@ -1,0 +1,8 @@
+# agents/router.py
+
+def route_task(text: str) -> str:
+    if "代码" in text or "code" in text:
+        return "code"
+    if "小说" in text or "故事" in text:
+        return "creative"
+    return "general"

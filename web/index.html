@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agent OS</title>
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <header class="sidebar-header">
+        <h1>Agent OS</h1>
+        <span id="health-badge" class="badge">…</span>
+      </header>
+      <section class="memory-panel" id="memory-panel">
+        <div class="memory-toolbar">
+          <h2>记忆</h2>
+          <button type="button" id="btn-refresh-memory" title="Refresh">↻</button>
+        </div>
+        <p class="agent-id">会话: <code id="agent-id-label"></code></p>
+        <div class="remember-row">
+          <input id="remember-input" type="text" placeholder="记住一条事实…" />
+          <button type="button" id="btn-remember">保存</button>
+        </div>
+        <div id="memory-error" class="error hidden"></div>
+        <div id="memory-content" class="memory-content">加载中…</div>
+      </section>
+      <section class="tools-panel">
+        <h2>系统能力</h2>
+        <pre id="tools-list">—</pre>
+      </section>
+    </aside>
+    <main class="main">
+      <header class="mode-bar">
+        <span class="mode-label">运行模式</span>
+        <button type="button" class="mode-btn active" data-mode="user">普通模式</button>
+        <button type="button" class="mode-btn" data-mode="developer">开发者模式</button>
+        <button type="button" class="mode-btn" data-mode="debug">调试 Trace</button>
+        <button type="button" class="mode-btn demo-btn" id="btn-demo">演示模式</button>
+        <span id="status-line" class="status-line">就绪</span>
+      </header>
+      <section class="chat-panel">
+        <div id="messages" class="messages"></div>
+        <div class="input-row">
+          <textarea id="chat-input" rows="2" placeholder="输入任务，例如：写一段小说大纲…"></textarea>
+          <button type="button" id="btn-send">发送</button>
+        </div>
+      </section>
+      <section class="trace-panel" id="trace-panel">
+        <h2>执行链（仅开发者可见）</h2>
+        <div id="trace-viewer" class="trace-viewer"></div>
+      </section>
+    </main>
+  </div>
+  <script src="console.js"></script>
+</body>
+</html>

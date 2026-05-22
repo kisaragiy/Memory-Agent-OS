@@ -1,0 +1,76 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Secrets & local data
+.env
+.env.*
+*.pem
+memory_db/
+chroma_db/
+data/sessions/
+
+# Frontend
+web/frontend/node_modules/
+web/frontend/dist/*.map
+
+# IDE / AI tooling
+.idea/
+.vscode/
+.cursor/
+.aider*
+*.chat.history.md
+*.input.history
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs & temp
+*.log
+/tmp/
+desktop_captures/
+docs/test_runs/
+scripts/git_result.txt
+scripts/run_result.txt
+scripts/copy_resume_log.txt
+
+# Resume PDF — not published (markdown only: docs/RESUME_CONTENT.md)
+docs/*.pdf
+docs/**/*.pdf
+
+# Accidental / local artifacts
+*:Zone.Identifier
+File:*
+Output capability*
+test.txt
+test_story.txt
+example.py
+story_to_audio.py
+tts_test.py
+.aider.chat.history.md
+scripts/do_push_now.log
+scripts/push_github_auto.log
+scripts/clean_history.log
+scripts/push_github_result.txt
+scripts/git_result.txt
+scripts/copy_resume_log.txt
+scripts/check_out.txt
+*.png
+!web/frontend/public/**/*.png
+
+# Legacy junk at repo root
+3
+5
+
+# Migration artifacts
+.migration_test
+MIGRATION_LOG.txt
+mig.sh
