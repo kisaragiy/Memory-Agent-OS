@@ -1,0 +1,3 @@
+file '/home/zwq/memory-chat/output/audio_0.mp3'
+file '/home/zwq/memory-chat/output/audio_1.mp3'
+file '/home/zwq/memory-chat/output/audio_2.mp3'
