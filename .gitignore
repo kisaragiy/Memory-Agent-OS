@@ -39,15 +39,51 @@ Thumbs.db
 desktop_captures/
 docs/test_runs/
 docs/MemoryAgentOS-*.docx
+docs/*.pdf
+
+# Local-only docs & scripts (not for public repo)
+PORTFOLIO.md
+docs/GITHUB_UPLOAD.md
+docs/RESUME_CONTENT.md
+docs/PLAYWRIGHT_MANUAL_INSTALL.md
+docs/resume_verify.txt
+desktop-os-tests/
+requirements-test-capture.txt
+requirements-docs.txt
+
+# Dev / publish scripts (keep locally)
+scripts/push_*.sh
+scripts/push_*.bat
+scripts/push_*.ps1
+scripts/push_*.log
+scripts/push_*.txt
+scripts/do_push*
+scripts/do_git*
+scripts/clean_github*
+scripts/publish_*
+scripts/setup_ssh*
+scripts/push_like*
+scripts/generate_resume*
+scripts/build_resume*
+scripts/check_resume*
+scripts/fast_hr_test.py
+scripts/background_test_capture.py
+scripts/agent_browser_capture.py
+scripts/collect_test_result.sh
+scripts/quick_test_for_agent.sh
+scripts/desktop_os_test_runner.sh
+scripts/run_background_test.sh
+scripts/kill_stuck_test.sh
+scripts/print_playwright_paths.py
+scripts/build_portfolio_docs.sh
+scripts/generate_portfolio_docs.py
+scripts/_run_exact.sh
 scripts/git_result.txt
 scripts/run_result.txt
 scripts/copy_resume_log.txt
+scripts/check_out.txt
 
-# Resume PDF — not published (markdown only: docs/RESUME_CONTENT.md)
-docs/*.pdf
-docs/**/*.pdf
-
-# Accidental / local artifacts
+# Accidental artifacts
 *:Zone.Identifier
 File:*
 Output capability*
@@ -56,22 +92,14 @@ test_story.txt
 example.py
 story_to_audio.py
 tts_test.py
-.aider.chat.history.md
-scripts/do_push_now.log
-scripts/push_github_auto.log
-scripts/clean_history.log
-scripts/push_github_result.txt
-scripts/git_result.txt
-scripts/copy_resume_log.txt
-scripts/check_out.txt
-*.png
-!web/frontend/public/**/*.png
 
 # Legacy junk at repo root
 3
 5
-
-# Migration artifacts
 .migration_test
 MIGRATION_LOG.txt
 mig.sh
+
+# Generated screenshots (local only)
+*.png
+!web/frontend/public/**/*.png
