@@ -1,6 +1,6 @@
 # Memory Agent OS — 架构图（Mermaid）
 
-> 可在 VS Code / GitHub 预览；运行 `python3 scripts/generate_portfolio_docs.py` 生成 PNG 并写入 docx。
+> 可在 VS Code / GitHub 中直接预览 Mermaid 源码。
 
 ## 1. 六层工程架构
 

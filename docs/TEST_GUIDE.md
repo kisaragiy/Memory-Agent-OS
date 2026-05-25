@@ -118,4 +118,4 @@ python3 scripts/verify_desktop_capture.py
 |------|------|
 | `docs/ARCHITECTURE_DIAGRAM.md` | Mermaid 架构图源 |
 | `docs/diagrams/*.png` | 脚本生成的位图（可选） |
-| `docs/*.docx` | 运行 `generate_portfolio_docs.py` 生成（可选） |
+| `docs/diagrams/*.png` | 架构位图（可选，本地生成） |
